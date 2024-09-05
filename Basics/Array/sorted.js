@@ -14,22 +14,43 @@
 //   Here element 5 is not smaller than or equal to its future elements.
 
 
+
+// time complexity is O(n^2)
+// class Solution {
+//     arraySortedOrNot(arr, n) {
+//         // Iterate through each element
+//         for (let i = 0; i < n - 1; i++) {
+//             // Compare with every subsequent element
+//             for (let j = i + 1; j < n; j++) {
+//                 // If any element is out of order, return false
+//                 if (arr[i] > arr[j]) {
+//                     return false;
+//                 }
+//             }
+//         }
+//         // All elements are in order
+//         return true;
+//     }
+// }
+
+// Time complexity is O(n)
+
 class Solution {
     arraySortedOrNot(arr, n) {
-        // Iterate through each element
+        // Iterate through the array
         for (let i = 0; i < n - 1; i++) {
-            // Compare with every subsequent element
-            for (let j = i + 1; j < n; j++) {
-                // If any element is out of order, return false
-                if (arr[i] > arr[j]) {
-                    return false;
-                }
+            // If any element is greater than the next one, return false
+            if (arr[i] > arr[i + 1]) {
+                return false;
             }
         }
         // All elements are in order
         return true;
     }
 }
+
+
+
 
 // Driver code
 // Creating an instance of solution class
