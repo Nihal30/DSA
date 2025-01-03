@@ -38,3 +38,21 @@ let n = 1235;
 const odd = new Odd();
 let ans = odd.NoOfOdd(n);
 console.log("ans", ans); // 3
+
+// cpp Solution 
+
+// class noOFOdd {
+// public: 
+// int countOddDigits(n){
+//   int odd = 0;
+//   while (n>0){
+//     int lastDigit = n%10;
+//     if(lastDigit %2 !=0){
+//       odd = odd + 1;
+//     }
+//     n = n/10;  
+//   }
+//   return odd
+
+// }
+// }
