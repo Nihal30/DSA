@@ -7,48 +7,104 @@
 
 // solution brute 
 
+// class Solution {
+//     /* Function to get the highest 
+//     occurring element in array nums */
+//     mostFrequentElement(nums) {
+        
+//         // Variable to store the size of array
+//         let n = nums.length;
+        
+//         // Variable to store maximum frequency
+//         let maxFreq = 0; 
+        
+//         /* Variable to store element 
+//         with maximum frequency */
+//         let maxEle = 0;
+        
+//         // Visited array
+//         let visited = new Array(n).fill(false);
+        
+//         // First loop
+//         for (let i = 0; i < n; i++) {
+//             // Skip second loop if already visited
+//             if (visited[i]) continue;
+            
+//             /* Variable to store frequency
+//             of current element */
+//             let freq = 0;
+            
+//             // Second loop
+//             for (let j = i; j < n; j++) {
+//                 if (nums[i] == nums[j]) {
+//                     freq++;
+//                     visited[j] = true;
+//                 }
+//             }
+            
+//             /* Update variables if new element having 
+//             highest frequency is found */
+//             if (freq > maxFreq) {
+//                 maxFreq = freq;
+//                 maxEle = nums[i];
+//             } else if (freq == maxFreq) {
+//                 maxEle = Math.min(maxEle, nums[i]);
+//             }
+//         }
+        
+//         // Return the result
+//         return maxEle;
+//     }
+// }
+
+// // Input array
+// let nums = [4, 4, 5, 5, 6];
+
+// // Creating an instance of Solution class
+// let sol = new Solution();
+
+// /* Function call to get the
+// highest occurring element in array nums */
+// let ans = sol.mostFrequentElement(nums);
+
+// console.log("The highest occurring element in the array is: " + ans);
+
+// tc o(n2)
+// sc O(n)
+
+
+// optimal solution
 class Solution {
-    /* Function to get the highest 
-    occurring element in array nums */
+    /* Function to get the highest
+    occurring element in array n */
     mostFrequentElement(nums) {
         
         // Variable to store the size of array
         let n = nums.length;
         
         // Variable to store maximum frequency
-        let maxFreq = 0; 
+        let maxFreq = 0;
         
-        /* Variable to store element 
-        with maximum frequency */
+        // Variable to store element
+        // with maximum frequency
         let maxEle = 0;
         
-        // Visited array
-        let visited = new Array(n).fill(false);
+        // HashMap
+        let mpp = new Map();
         
-        // First loop
+        // Iterating on the array
         for (let i = 0; i < n; i++) {
-            // Skip second loop if already visited
-            if (visited[i]) continue;
+            // Updating hashmap
+            mpp.set(nums[i], (mpp.get(nums[i]) || 0) + 1);
+        }
             
-            /* Variable to store frequency
-            of current element */
-            let freq = 0;
-            
-            // Second loop
-            for (let j = i; j < n; j++) {
-                if (nums[i] == nums[j]) {
-                    freq++;
-                    visited[j] = true;
-                }
-            }
-            
-            /* Update variables if new element having 
-            highest frequency is found */
+        // Iterate on the map
+        for (let [ele, freq] of mpp) {
             if (freq > maxFreq) {
                 maxFreq = freq;
-                maxEle = nums[i];
-            } else if (freq == maxFreq) {
-                maxEle = Math.min(maxEle, nums[i]);
+                maxEle = ele;
+            } else if (freq === maxFreq) {
+                maxEle = Math.min(maxEle, ele);
             }
         }
         
@@ -60,16 +116,17 @@ class Solution {
 // Input array
 let nums = [4, 4, 5, 5, 6];
 
-// Creating an instance of Solution class
+/* Creating an instance of
+Solution class */
 let sol = new Solution();
 
 /* Function call to get the
-highest occurring element in array nums */
+highest occurring element in array n */
 let ans = sol.mostFrequentElement(nums);
 
-console.log("The highest occurring element in the array is: " + ans);
+console.log(`The highest occurring element in the array is: ${ans}`);
 
-// tc o(n2)
-// sc O(n)
+// ts - O(n)
+// sc - O(n)
 
 
