@@ -69,4 +69,7 @@ let ans = sol.mostFrequentElement(nums);
 
 console.log("The highest occurring element in the array is: " + ans);
 
+// tc o(n2)
+// sc O(n)
+
 
