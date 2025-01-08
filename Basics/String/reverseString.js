@@ -28,3 +28,21 @@ console.log(s);
 
 // tc O(n)
 // sc O(n)
+
+
+// Optimal Solution
+
+function reverseStringOptimal(s) {
+    let left = 0;
+    let right = s.length - 1;
+
+    while (left < right) {
+        // Swap characters
+        [s[left], s[right]] = [s[right], s[left]];
+        
+        // Move pointers
+        left++;
+        right--;
+    }
+
+}
