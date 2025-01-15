@@ -43,3 +43,6 @@ const largest = sol.largestElement(nums);
 
 // Print the largest element
 console.log(largest);
+
+// TC = O(n) 
+// SC =O(1)
