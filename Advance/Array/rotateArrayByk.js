@@ -52,3 +52,53 @@
 
 // console.log(`Array after rotating elements by ${k} places: `);
 // printArray(nums);
+
+// optimal
+class Solution {
+    // Function to reverse the array between start and end
+    reverseArray(nums, start, end) {
+        while (start < end) {
+            let temp = nums[start];
+            nums[start] = nums[end];
+            nums[end] = temp;
+            start++;
+            end--;
+        }
+    }
+
+    // Function to rotate the array to the left by k positions
+    rotateArray(nums, k) {
+        let n = nums.length; // Size of array
+        k = k % n; // To avoid unnecessary rotations
+
+        // Reverse the first k elements
+        this.reverseArray(nums, 0, k - 1);
+
+        // Reverse the last n-k elements
+        this.reverseArray(nums, k, n - 1);
+
+        // Reverse the entire array
+        this.reverseArray(nums, 0, n - 1);
+    }
+}
+
+// Helper function to print the array
+function printArray(nums) {
+    console.log(nums.join(" "));
+}
+
+const nums = [1, 2, 3, 4, 5, 6];
+const k = 2;
+
+console.log("Initial array: ");
+printArray(nums);
+
+// Create an instance of the Solution class
+const sol = new Solution();
+
+/* Function call to rotate the 
+array to the left by k places */
+sol.rotateArray(nums, k);
+
+console.log(`Array after rotating elements by ${k} places: `);
+printArray(nums);
