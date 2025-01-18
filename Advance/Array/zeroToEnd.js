@@ -31,4 +31,50 @@
 // }
 
 // let nums = [1,2,0,3,0,1,4,0]
-// bruteMoveZeroes(nums)
+// bruteMoveZeroes(nums)   
+
+//  optimal Solution
+// we will be using 2 pointers to solve this 
+
+class Solution {
+    moveZeroes(nums) {
+        let j = -1;
+       // length of nums
+        const n = nums.length; 
+        
+        // place the pointer j:
+        for (let i = 0; i < n; i++) {
+            if (nums[i] === 0) {
+                j = i;
+                break;
+            }
+        }
+        
+        // no non-zero elements:
+        if (j === -1) {
+            return nums;
+        }
+        
+        /* Move the pointers i and 
+        j and swap accordingly*/
+        for (let i = j + 1; i < n; i++) {
+            if (nums[i] !== 0) {
+                [nums[i], nums[j]] = [nums[j], nums[i]];
+                j++;
+            }
+        }
+        
+        return nums;
+    }
+}
+
+// Example usage:
+const arr = [1, 0, 2, 3, 2, 0, 0, 4, 5, 1];
+
+//Create an instance of the class
+const solution = new Solution();
+
+solution.moveZeroes(arr);
+
+// Print the modified array
+console.log(arr);
