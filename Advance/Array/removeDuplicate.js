@@ -9,3 +9,54 @@
 // Input: nums = [0, 0, 3, 3, 5, 6]
 // Output: [0, 3, 5, 6, _, _]
 // Explanation: There are 4 distinct elements in nums and the elements marked as _ can have any value.
+
+
+// brute
+class Solution {
+    // Function to remove duplicates from the array
+    removeDuplicates(nums) {
+        
+        // Set data structure to store unique elements
+        let s = new Set();
+        
+        // Add all elements from array to the set
+        for (let val of nums) {
+            s.add(val);
+        }
+        
+        // Get the number of unique elements
+        let k = s.size;
+        
+        let j = 0;
+        // Copy unique elements from set to array
+        for (let val of s) {
+            nums[j++] = val;
+        }
+        
+        // Return the number of unique elements
+        return k;
+    }
+}
+
+// Helper function to print first n elements of the array
+function printArray(nums, n) {
+    for (let i = 0; i < n; i++) {
+        process.stdout.write(nums[i] + " ");
+    }
+    console.log();
+}
+
+// Example usage
+let nums = [1, 1, 2, 2, 2, 3, 3];
+
+console.log("Original Array: ");
+printArray(nums, nums.length);
+
+// Create an instance of the Solution class
+let sol = new Solution();
+
+// Function call to remove duplicates from array
+let k = sol.removeDuplicates(nums);
+
+console.log("Array after removing the duplicates: ");
+printArray(nums, k);
