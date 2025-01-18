@@ -12,51 +12,102 @@
 
 
 // brute
+// class Solution {
+//     // Function to remove duplicates from the array
+//     removeDuplicates(nums) {
+        
+//         // Set data structure to store unique elements
+//         let s = new Set();
+        
+//         // Add all elements from array to the set
+//         for (let val of nums) {
+//             s.add(val);
+//         }
+        
+//         // Get the number of unique elements
+//         let k = s.size;
+        
+//         let j = 0;
+//         // Copy unique elements from set to array
+//         for (let val of s) {
+//             nums[j++] = val;
+//         }
+        
+//         // Return the number of unique elements
+//         return k;
+//     }
+// }
+
+// // Helper function to print first n elements of the array
+// function printArray(nums, n) {
+//     for (let i = 0; i < n; i++) {
+//         process.stdout.write(nums[i] + " ");
+//     }
+//     console.log();
+// }
+
+// // Example usage
+// let nums = [1, 1, 2, 2, 2, 3, 3];
+
+// console.log("Original Array: ");
+// printArray(nums, nums.length);
+
+// // Create an instance of the Solution class
+// let sol = new Solution();
+
+// // Function call to remove duplicates from array
+// let k = sol.removeDuplicates(nums);
+
+// console.log("Array after removing the duplicates: ");
+// printArray(nums, k);
+
+
+// optimal using 2 pointers
 class Solution {
     // Function to remove duplicates from the array
     removeDuplicates(nums) {
-        
-        // Set data structure to store unique elements
-        let s = new Set();
-        
-        // Add all elements from array to the set
-        for (let val of nums) {
-            s.add(val);
+        // Edge case: if array is empty
+        if (nums.length === 0) {
+            return 0;
         }
         
-        // Get the number of unique elements
-        let k = s.size;
+        // Initialize pointer for unique elements
+        let i = 0;
         
-        let j = 0;
-        // Copy unique elements from set to array
-        for (let val of s) {
-            nums[j++] = val;
+        // Iterate through the array
+        for (let j = 1; j < nums.length; j++) {
+            /* If current element is different 
+            from the previous unique element*/
+            if (nums[i] !== nums[j]) {
+                
+                /* Move to the next position in 
+                the array for the unique element*/
+                i++;
+                
+                /* Update the current position 
+                with the unique element*/
+                nums[i] = nums[j];
+            }
         }
         
         // Return the number of unique elements
-        return k;
+        return i + 1;
     }
 }
 
-// Helper function to print first n elements of the array
-function printArray(nums, n) {
-    for (let i = 0; i < n; i++) {
+// Main function to test the implementation
+if (typeof require !== 'undefined' && require.main === module) {
+    let nums = [1, 1, 2, 2, 2, 3, 3];
+    
+    // Create an instance of the Solution class
+    let solution = new Solution();
+    
+    // Call removeDuplicates to remove duplicates from nums
+    let k = solution.removeDuplicates(nums);
+    
+    console.log("The array after removing duplicate elements is ");
+    for (let i = 0; i < k; i++) {
         process.stdout.write(nums[i] + " ");
     }
     console.log();
 }
-
-// Example usage
-let nums = [1, 1, 2, 2, 2, 3, 3];
-
-console.log("Original Array: ");
-printArray(nums, nums.length);
-
-// Create an instance of the Solution class
-let sol = new Solution();
-
-// Function call to remove duplicates from array
-let k = sol.removeDuplicates(nums);
-
-console.log("Array after removing the duplicates: ");
-printArray(nums, k);
