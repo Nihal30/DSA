@@ -55,4 +55,55 @@
 // // Execute main function
 // new Solution().main();
 
+// tc = O(n1 *n2)
+// sc = O(n)
+
+
+// optimal
+
+// using 2 pointer 
+
+class Solution {
+    //Function to find intersection of two sorted arrays
+    intersectionArray(nums1, nums2) {
+        const ans = [];
+        let i = 0, j = 0;
+
+        // Traverse both arrays using two pointers approach
+        while (i < nums1.length && j < nums2.length) {
+            if (nums1[i] < nums2[j]) {
+                i++;
+            } else if (nums2[j] < nums1[i]) {
+                j++;
+            } 
+            // nums1[i] == nums2[j]
+             else { 
+                 ans.push(nums1[i]);
+                  i++;
+                  j++;
+            }
+        }
+       //Return final ans
+        return ans;
+    }
+
+    main() {
+        const nums1 = [1, 2, 3, 3, 4, 5, 6, 7];
+        const nums2 = [3, 3, 4, 4, 5, 8];
+
+        // Create an instance of the Solution class
+        const finder = new Solution();
+
+        // Get intersection of nums1 and nums2 using class method
+        const ans = finder.intersectionArray(nums1, nums2);
+
+        console.log("Intersection of nums1 and nums2 is:");
+        console.log(ans.join(" "));
+    }
+}
+
+// Execute main function
+new Solution().main();
+
+
 
