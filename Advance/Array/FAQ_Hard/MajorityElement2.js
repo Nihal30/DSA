@@ -55,3 +55,59 @@
 
 // // Print the majority elements found
 // console.log("The majority elements are: " + ans.join(" "));
+
+// better ..
+// hashing 
+class Solution {
+    // Function to find majority elements in an array
+    majorityElementTwo(nums) {
+        
+        // Size of the array
+        let n = nums.length;
+
+        // List of answers
+        let result = [];
+
+        // Declaring a map
+        let mpp = new Map();
+
+        // Least occurrence of the majority element
+        let mini = Math.floor(n / 3) + 1;
+
+        // Storing the elements with its occurrence
+        for (let i = 0; i < n; i++) {
+            let num = nums[i];
+            if (!mpp.has(num)) {
+                mpp.set(num, 0);
+            }
+            mpp.set(num, mpp.get(num) + 1);
+
+            // Checking if num is the majority element
+            if (mpp.get(num) === mini) {
+                result.push(num);
+            }
+
+            // If result size is equal to 2 break out of loop
+            if (result.length === 2) {
+                break;
+            }
+        }
+
+        // Return the majority elements
+        return result;
+    }
+}
+
+let arr = [11, 33, 33, 11, 33, 11];
+
+// Create an instance of Solution class
+let sol = new Solution();
+
+let ans = sol.majorityElementTwo(arr);
+
+// Print the majority elements found
+console.log("The majority elements are:", ans.join(" "));
+
+
+
+
