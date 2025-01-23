@@ -9,6 +9,56 @@
 
 // brute ..
 // linear search using 2 loops 
+// class Solution {
+//     // Function to find the majority element in an array
+//     majorityElement(nums) {
+        
+//         // Size of the given array
+//         let n = nums.length;
+        
+//         // Iterate through each element of the array
+//         for (let i = 0; i < n; i++) {
+            
+//             // Counter to count occurrences of nums[i]
+//             let cnt = 0; 
+            
+//             // Count the frequency of nums[i] in the array
+//             for (let j = 0; j < n; j++) {
+//                 if (nums[j] === nums[i]) {
+//                     cnt++;
+//                 }
+//             }
+            
+//             // Check if frequency of nums[i] is greater than n/2
+//             if (cnt > Math.floor(n / 2)) {
+//                 // Return the majority element
+//                 return nums[i]; 
+//             }
+//         }
+        
+//         // Return -1 if no majority element is found
+//         return -1; 
+//     }
+// }
+
+// function main() {
+//     let arr = [2, 2, 1, 1, 1, 2, 2];
+    
+//     // Create an instance of Solution class
+//     let sol = new Solution();
+ 
+//     let ans = sol.majorityElement(arr);
+    
+//     // Print the majority element found
+//     console.log("The majority element is:", ans);
+// }
+
+// // Execute the main function
+// main();
+
+// better ..
+// using hashing 
+
 class Solution {
     // Function to find the majority element in an array
     majorityElement(nums) {
@@ -16,31 +66,28 @@ class Solution {
         // Size of the given array
         let n = nums.length;
         
-        // Iterate through each element of the array
-        for (let i = 0; i < n; i++) {
-            
-            // Counter to count occurrences of nums[i]
-            let cnt = 0; 
-            
-            // Count the frequency of nums[i] in the array
-            for (let j = 0; j < n; j++) {
-                if (nums[j] === nums[i]) {
-                    cnt++;
-                }
-            }
-            
-            // Check if frequency of nums[i] is greater than n/2
-            if (cnt > Math.floor(n / 2)) {
-                // Return the majority element
-                return nums[i]; 
+        // Hash map to store element counts
+        let map = new Map();
+        
+        // Count occurrences of each element
+        for (let num of nums) {
+            map.set(num, (map.get(num) || 0) + 1);
+        }
+        
+        /* Iterate through the map to
+        find the majority element */
+        for (let [key, value] of map.entries()) {
+            if (value > n / 2) {
+                return key;
             }
         }
         
         // Return -1 if no majority element is found
-        return -1; 
+        return -1;
     }
 }
 
+// Main function to test the Solution class
 function main() {
     let arr = [2, 2, 1, 1, 1, 2, 2];
     
@@ -55,5 +102,8 @@ function main() {
 
 // Execute the main function
 main();
+
+
+
 
 
