@@ -42,34 +42,73 @@
 // better
 
 
+// class Solution {
+//     subarraySum(nums, k) {
+//         let n = nums.length;
+//         // Number of subarrays
+//         let count = 0;
+
+//         // starting index
+//         for (let startIndex = 0; startIndex < n; startIndex++) {
+//             let currentSum = 0;
+//             // ending index
+//             for (let endIndex = startIndex; endIndex < n; endIndex++) {
+//                 // calculate the sum of subarray [startIndex...endIndex]
+//                 // sum of [startIndex..endIndex-1] + nums[endIndex]
+//                 currentSum += nums[endIndex];
+
+//                 // Increase the count if currentSum == k:
+//                 if (currentSum == k)
+//                     count++;
+//             }
+//         }
+//         return count;
+//     }
+// }
+
+// const solution = new Solution();
+// const nums = [3, 1, 2, 4];
+// const k = 6;
+// // Function call to find the result
+// const count = solution.subarraySum(nums, k);
+// console.log("The number of subarrays is:", count);
+
+
+// optimal .. using prifix sum
+
 class Solution {
     subarraySum(nums, k) {
         let n = nums.length;
-        // Number of subarrays
-        let count = 0;
+        let prefixSumMap = new Map();
+        let currentPrefixSum = 0, subarrayCount = 0;
 
-        // starting index
-        for (let startIndex = 0; startIndex < n; startIndex++) {
-            let currentSum = 0;
-            // ending index
-            for (let endIndex = startIndex; endIndex < n; endIndex++) {
-                // calculate the sum of subarray [startIndex...endIndex]
-                // sum of [startIndex..endIndex-1] + nums[endIndex]
-                currentSum += nums[endIndex];
+        // Setting 0 in the map.
+        prefixSumMap.set(0, 1);
+        for (let i = 0; i < n; i++) {
+            // Add current element to prefix sum:
+            currentPrefixSum += nums[i];
 
-                // Increase the count if currentSum == k:
-                if (currentSum == k)
-                    count++;
-            }
+            /* Calculate the value to remove
+            (currentPrefixSum - k)*/
+            let sumToRemove = currentPrefixSum - k;
+
+            /* Add the number of subarrays 
+            with the sum to be removed*/
+            subarrayCount += prefixSumMap.get(sumToRemove) || 0;
+
+            /* Update the count of current 
+            prefix sum in the map*/
+            prefixSumMap.set(currentPrefixSum, (prefixSumMap.get(currentPrefixSum) || 0) + 1);
         }
-        return count;
+        return subarrayCount;
     }
 }
 
 const solution = new Solution();
 const nums = [3, 1, 2, 4];
 const k = 6;
-// Function call to find the result
-const count = solution.subarraySum(nums, k);
-console.log("The number of subarrays is:", count);
+// Function call to get the result
+const subarrayCount = solution.subarraySum(nums, k);
+console.log("The number of subarrays is:", subarrayCount);
+
 
