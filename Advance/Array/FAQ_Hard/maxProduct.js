@@ -53,54 +53,96 @@
 
 // better
 
-class Solution {
-    /* Function to find maximum product subarray */
-    maxProduct(nums) {
-        // Initialize result with first element of nums
-        let result = nums[0];
+// class Solution {
+//     /* Function to find maximum product subarray */
+//     maxProduct(nums) {
+//         // Initialize result with first element of nums
+//         let result = nums[0];
 
-        /* Iterate through each element
-        as a starting point of subarray */
-        for (let i = 0; i < nums.length; i++) {
+//         /* Iterate through each element
+//         as a starting point of subarray */
+//         for (let i = 0; i < nums.length; i++) {
             
-            // Initialize p with nums[i]
-            let p = nums[i];
+//             // Initialize p with nums[i]
+//             let p = nums[i];
 
-            /* Iterate through subsequent elements
-            to form subarrays starting from nums[i] */
-            for (let j = i + 1; j < nums.length; j++) {
+//             /* Iterate through subsequent elements
+//             to form subarrays starting from nums[i] */
+//             for (let j = i + 1; j < nums.length; j++) {
                 
-                /* Update result with the
-                max of current result and p */
-                result = Math.max(result, p);
+//                 /* Update result with the
+//                 max of current result and p */
+//                 result = Math.max(result, p);
 
-                // Update p by multiplying with nums[j]
-                p *= nums[j];
-            }
+//                 // Update p by multiplying with nums[j]
+//                 p *= nums[j];
+//             }
 
-            // Update result for subarray ending at nums[i]
-            result = Math.max(result, p);
+//             // Update result for subarray ending at nums[i]
+//             result = Math.max(result, p);
+//         }
+
+//         // Return maximum product subarray found
+//         return result;
+//     }
+
+//     static main() {
+//         const nums = [4, 5, 3, 7, 1, 2];
+
+//         // Create an instance of Solution class
+//         let sol = new Solution();
+
+//         let maxProd = sol.maxProduct(nums);
+
+//         // Print the result
+//         console.log("The maximum product subarray:", maxProd);
+//     }
+// }
+
+// // Call the main function to test the Solution class
+// Solution.main();
+
+// optimal
+
+class Solution {
+    /* Function to find the product of 
+    elements in maximum product subarray */
+    maxProduct(nums) {
+        let n = nums.length;
+        
+        let ans = Number.MIN_SAFE_INTEGER; // to store the answer
+        
+        // Indices to store the prefix and suffix multiplication
+        let prefix = 1, suffix = 1;
+        
+        // Iterate on the elements of the given array
+        for (let i = 0; i < n; i++) {
+            
+            /* Resetting the prefix and suffix
+            multiplication if they turn out to be zero */
+            if (prefix === 0) prefix = 1;
+            if (suffix === 0) suffix = 1;
+            
+            // update the prefix and suffix multiplication
+            prefix *= nums[i];
+            suffix *= nums[n - i - 1];
+            
+            // store the maximum as the answer
+            ans = Math.max(ans, prefix, suffix);
         }
-
-        // Return maximum product subarray found
-        return result;
-    }
-
-    static main() {
-        const nums = [4, 5, 3, 7, 1, 2];
-
-        // Create an instance of Solution class
-        let sol = new Solution();
-
-        let maxProd = sol.maxProduct(nums);
-
-        // Print the result
-        console.log("The maximum product subarray:", maxProd);
+        
+        // return the result
+        if(ans === -0) return 0;
+        return ans;
     }
 }
 
-// Call the main function to test the Solution class
-Solution.main();
+// Example usage
+let nums = [4, 5, 3, 7, 1, 2];
+let sol = new Solution();
+let ans = sol.maxProduct(nums);
+console.log("The product of elements in maximum product subarray is:", ans);
+
 
 
 
