@@ -61,35 +61,84 @@
 
 // better
 
+// class Solution {
+//     // Function to find maximum sum of subarrays
+//     maxSubArray(nums) {
+        
+//         /* Initialize maximum sum with
+//         the smallest possible integer*/
+//         let maxi = -Infinity; 
+
+//         // Iterate over each starting index of subarrays
+//         for (let i = 0; i < nums.length; i++) {
+            
+//             /* Variable to store the sum
+//             of the current subarray*/
+//             let sum = 0; 
+            
+//             /* Iterate over each ending index
+//             of subarrays starting from i*/
+//             for (let j = i; j < nums.length; j++) {
+                
+//                 /* Add the current element nums[j] to
+//                 the sum i.e. sum of nums[i...j-1]*/
+//                 sum += nums[j];
+
+//                 /* Update maxi with the maximum of its current
+//                 value and the sum of the current subarray*/
+//                 maxi = Math.max(maxi, sum);
+//             }
+//         }
+
+//         // Return the maximum subarray sum found
+//         return maxi;
+//     }
+// }
+
+// function main() {
+//     let arr = [ -2, 1, -3, 4, -1, 2, 1, -5, 4 ];
+
+//     // Create an instance of Solution class
+//     let sol = new Solution();
+
+//     let maxSum = sol.maxSubArray(arr);
+
+//     // Print the max subarray sum
+//     console.log("The maximum subarray sum is: " + maxSum);
+// }
+
+// // Execute the main function
+// main();
+
+// optimal using Kadane's algo
+
 class Solution {
     // Function to find maximum sum of subarrays
     maxSubArray(nums) {
         
-        /* Initialize maximum sum with
-        the smallest possible integer*/
+        // maximum sum
         let maxi = -Infinity; 
-
-        // Iterate over each starting index of subarrays
+        
+        // current sum of subarray
+        let sum = 0; 
+        
+        // Iterate through the array
         for (let i = 0; i < nums.length; i++) {
             
-            /* Variable to store the sum
-            of the current subarray*/
-            let sum = 0; 
+            // Add current element to the sum
+            sum += nums[i]; 
             
-            /* Iterate over each ending index
-            of subarrays starting from i*/
-            for (let j = i; j < nums.length; j++) {
-                
-                /* Add the current element nums[j] to
-                the sum i.e. sum of nums[i...j-1]*/
-                sum += nums[j];
-
-                /* Update maxi with the maximum of its current
-                value and the sum of the current subarray*/
-                maxi = Math.max(maxi, sum);
+            // Update maxi if current sum is greater
+            if (sum > maxi) {
+                maxi = sum; 
+            }
+            
+            // Reset sum to 0 if it becomes negative
+            if (sum < 0) {
+                sum = 0; 
             }
         }
-
+        
         // Return the maximum subarray sum found
         return maxi;
     }
@@ -109,6 +158,7 @@ function main() {
 
 // Execute the main function
 main();
+
 
 
 
