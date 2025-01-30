@@ -13,43 +13,97 @@
 //  So, 3 is the minimum possible answer.
 
 // LS
+// class Solution {
+//     // Function to find the smallest divisor
+//     smallestDivisor(nums, limit) {
+//         // Size of array
+//         let n = nums.length;
+
+//         // Find the maximum element in nums
+//         let maxi = Math.max(...nums);
+
+//         // Find the smallest divisor
+//         for (let d = 1; d <= maxi; d++) {
+//             let sum = 0;
+
+//             /* Calculate the sum of ceil
+//             (nums[i] / d) for all elements */
+//             for (let i = 0; i < n; i++) {
+//                 sum += Math.ceil(nums[i] / d);
+//             }
+
+//             // Check if the sum is <= limit
+//             if (sum <= limit)
+//                 return d;
+//         }
+
+//         // Return -1 if no valid divisor found
+//         return -1;
+//     }
+// }
+
+// let arr = [1, 2, 3, 4, 5];
+// let limit = 8;
+
+// // Create an object of the Solution class
+// let sol = new Solution();
+
+// let ans = sol.smallestDivisor(arr, limit);
+
+// // Print the result
+// console.log(`The minimum divisor is: ${ans}`);
+
+// BS
+
 class Solution {
+    /* Helper function to find the 
+    summation of division values*/
+    sumByD(nums, limit) {
+        // Size of array
+        const n = nums.length; 
+        
+        // Find the summation of division values
+        let sum = 0;
+        for (let i = 0; i < n; i++) {
+            sum += Math.ceil(nums[i] / limit);
+        }
+        return sum;
+    }
+
     // Function to find the smallest divisor
     smallestDivisor(nums, limit) {
-        // Size of array
-        let n = nums.length;
+        const n = nums.length;
+        if (n > limit) return -1;
+        
+        // Initialize binary search bounds
+        let low = 1, high = Math.max(...nums);
 
-        // Find the maximum element in nums
-        let maxi = Math.max(...nums);
-
-        // Find the smallest divisor
-        for (let d = 1; d <= maxi; d++) {
-            let sum = 0;
-
-            /* Calculate the sum of ceil
-            (nums[i] / d) for all elements */
-            for (let i = 0; i < n; i++) {
-                sum += Math.ceil(nums[i] / d);
+        // Apply binary search
+        while (low <= high) {
+            let mid = Math.floor((low + high) / 2);
+            if (this.sumByD(nums, mid) <= limit) {
+                high = mid - 1;
+            } else {
+                low = mid + 1;
             }
-
-            // Check if the sum is <= limit
-            if (sum <= limit)
-                return d;
         }
-
-        // Return -1 if no valid divisor found
-        return -1;
+        //Return the answer
+        return low;
     }
 }
 
-let arr = [1, 2, 3, 4, 5];
-let limit = 8;
+function main() {
+    const nums = [1, 2, 3, 4, 5];
+    const limit = 8;
 
-// Create an object of the Solution class
-let sol = new Solution();
+    // Create an object of the Solution class
+    const sol = new Solution();
 
-let ans = sol.smallestDivisor(arr, limit);
+    const ans = sol.smallestDivisor(nums, limit);
 
-// Print the result
-console.log(`The minimum divisor is: ${ans}`);
+    // Print the result
+    console.log(`The minimum divisor is: ${ans}`);
+}
+main();
+
 
