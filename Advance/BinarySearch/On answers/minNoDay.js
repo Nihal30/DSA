@@ -10,6 +10,96 @@
 
 //  LS
 
+// class Solution {
+//     /* Function to check if it's possible to make
+//     m bouquets with k flowers each on day */
+//     possible(nums, day, m, k) {
+//         let n = nums.length;
+        
+//         // Count of flowers bloomed
+//         let cnt = 0;
+        
+//         // Count of bouquets formed
+//         let noOfB = 0;
+
+//         // Count number of bouquets that can be formed
+//         for (let i = 0; i < n; i++) {
+//             if (nums[i] <= day) {
+//                 // Increment flower count
+//                 cnt++;
+//             } else {
+//                 /* Calculate number of bouquets
+//                    formed with flowers <= day */
+//                 noOfB += Math.floor(cnt / k);
+                
+//                 // Reset flower count
+//                 cnt = 0;
+//             }
+//         }
+//         // Add remaining flowers as a bouquet
+//         noOfB += Math.floor(cnt / k);
+
+//         /* Return true if enough 
+//            bouquets can be formed */
+//         return noOfB >= m;
+//     }
+
+//     /* Function to find the earliest day to
+//     make m bouquets of k flowers each */
+//     roseGarden(n, nums, k, m) {
+//         /* Calculate the minimum 
+//            number of flowers required */
+//         let val = m * k;
+        
+//         /* Impossible case: not enough 
+//            flowers to make m bouquets */
+//         if (val > n) return -1;
+        
+//         /* Find maximum and minimum
+//            bloom days in the array */
+//         let mini = Infinity, maxi = -Infinity;
+//         for (let i = 0; i < n; i++) {
+//             mini = Math.min(mini, nums[i]);
+//             maxi = Math.max(maxi, nums[i]);
+//         }
+
+//         /* Linear search to find the
+//         earliest day to make m bouquets */
+//         for (let i = mini; i <= maxi; i++) {
+//             if (this.possible(nums, i, m, k)) {
+//                 return i;
+//             }
+//         }
+//         // Return -1 if no such day exists
+//         return -1;
+//     }
+// }
+
+// function main() {
+//     let arr = [7, 7, 7, 7, 13, 11, 12, 7];
+    
+//     let n = arr.length;
+    
+//     // Number of flowers per bouquet
+//     let k = 3;
+    
+//     // Number of bouquets needed
+//     let m = 2;
+
+//     // Create an instance of the Solution class
+//     let sol = new Solution();
+    
+//     let ans = sol.roseGarden(n, arr, k, m);
+//     if (ans == -1) {
+//         console.log("We cannot make m bouquets.");
+//     } else {
+//         console.log("We can make bouquets on day " + ans);
+//     }
+// }
+
+// main();
+
+// bs
 class Solution {
     /* Function to check if it's possible to make
     m bouquets with k flowers each on day */
@@ -44,7 +134,7 @@ class Solution {
         return noOfB >= m;
     }
 
-    /* Function to find the earliest day to
+    /*Function to find the earliest day to
     make m bouquets of k flowers each */
     roseGarden(n, nums, k, m) {
         /* Calculate the minimum 
@@ -63,15 +153,31 @@ class Solution {
             maxi = Math.max(maxi, nums[i]);
         }
 
-        /* Linear search to find the
-        earliest day to make m bouquets */
-        for (let i = mini; i <= maxi; i++) {
-            if (this.possible(nums, i, m, k)) {
-                return i;
+        /* Binary search to find the
+           earliest day to make m bouquets */
+        let left = mini, right = maxi, ans = -1;
+        while (left <= right) {
+            
+            // Calculate the middle day
+            let mid = left + Math.floor((right - left) / 2);
+            
+            /* Check if it's possible to 
+               make m bouquets on day mid */
+            if (this.possible(nums, mid, m, k)) {
+                
+                // Update the answer to mid
+                ans = mid;
+                
+                // Try for a smaller day
+                right = mid - 1;
+            } else {
+                left = mid + 1;
             }
         }
-        // Return -1 if no such day exists
-        return -1;
+        
+        /* Return the earliest day or
+        -1 if no such day exists */
+        return ans;
     }
 }
 
@@ -98,4 +204,5 @@ function main() {
 }
 
 main();
+
 
