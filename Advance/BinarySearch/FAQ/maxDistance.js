@@ -12,47 +12,109 @@
 //       It can be shown that there is no possible way to add 4 gas stations in such a way that the value of dist is lower than this. 
 
 // brute 
+// class Solution {
+//     /* Function to minimize the maximum
+//     distance between gas stations */
+//     minimiseMaxDistance(arr, k) {
+//     const n = arr.length; 
+    
+//     /* Array to store how many gas 
+//         stations are placed in each section*/
+//     const howMany = new Array(n - 1).fill(0);
+
+//     //Pick and place k gas stations
+//     for (let gasStations = 1; gasStations <= k; gasStations++) {
+//         let maxSection = -1;
+//         let maxInd = -1;
+        
+//         /* Find the maximum section 
+//         and insert the gas station*/
+//         for (let i = 0; i < n - 1; i++) {
+//             const diff = arr[i + 1] - arr[i];
+            
+//             /* Update the maximum section
+//             length and its index */
+//             const sectionLength = diff / (howMany[i] + 1);
+//             if (sectionLength > maxSection) {
+//                 maxSection = sectionLength;
+//                 maxInd = i;
+//             }
+//         }
+//         /* Insert the current gas 
+//         station into the section */
+//         howMany[maxInd]++;
+//     }
+
+//     //Find the maximum distance i.e. the answer
+//     let maxAns = -1;
+//     for (let i = 0; i < n - 1; i++) {
+//         const diff = arr[i + 1] - arr[i];
+//         const sectionLength = diff / (howMany[i] + 1);
+//         maxAns = Math.max(maxAns, sectionLength);
+//     }
+//     return maxAns;
+//     }
+// }
+
+// const arr = [1, 2, 3, 4, 5];
+// const k = 4;
+
+// // Create an instance of the Solution class
+// const sol = new Solution();
+
+// // Call the minimiseMaxDistance method and print the result
+// const ans = sol.minimiseMaxDistance(arr, k);
+// console.log(`The answer is: ${ans}`);
+
+// better using queue 
+
 class Solution {
     /* Function to minimize the maximum
-    distance between gas stations */
+       distance between gas stations */
     minimiseMaxDistance(arr, k) {
-    const n = arr.length; 
-    
-    /* Array to store how many gas 
-        stations are placed in each section*/
-    const howMany = new Array(n - 1).fill(0);
-
-    //Pick and place k gas stations
-    for (let gasStations = 1; gasStations <= k; gasStations++) {
-        let maxSection = -1;
-        let maxInd = -1;
+        const n = arr.length; // Size of array
         
-        /* Find the maximum section 
-        and insert the gas station*/
-        for (let i = 0; i < n - 1; i++) {
-            const diff = arr[i + 1] - arr[i];
-            
-            /* Update the maximum section
-            length and its index */
-            const sectionLength = diff / (howMany[i] + 1);
-            if (sectionLength > maxSection) {
-                maxSection = sectionLength;
-                maxInd = i;
-            }
-        }
-        /* Insert the current gas 
-        station into the section */
-        howMany[maxInd]++;
-    }
+        /* Array to store how many gas 
+           stations are placed in each section */
+        const howMany = new Array(n - 1).fill(0); 
+        
+        /* Min heap to store sections by
+           their current maximum distance */
+        const pq = []; 
 
-    //Find the maximum distance i.e. the answer
-    let maxAns = -1;
-    for (let i = 0; i < n - 1; i++) {
-        const diff = arr[i + 1] - arr[i];
-        const sectionLength = diff / (howMany[i] + 1);
-        maxAns = Math.max(maxAns, sectionLength);
-    }
-    return maxAns;
+        /* Insert first n-1 elements into priority
+           queue with respective distance values */
+        for (let i = 0; i < n - 1; i++) {
+            pq.push([- (arr[i + 1] - arr[i]), i]);
+        }
+
+        for (let gasStations = 1; gasStations <= k; gasStations++) {
+            /* Find the maximum section 
+               and insert the gas station */
+            pq.sort((a, b) => b[0] - a[0]); 
+            
+            // Get the section with maximum distance
+            const [negDist, secInd] = pq.pop(); 
+
+            // Insert current gas station into section
+            howMany[secInd]++;
+
+            /* Calculate the initial difference
+               between adjacent gas stations */
+            const inidiff = arr[secInd + 1] - arr[secInd];
+
+            /* Calculate the new section length 
+               after inserting another gas station */
+            const newSecLen = inidiff / (howMany[secInd] + 1);
+
+            /* Push the updated section 
+               back into the priority queue */
+            pq.push([-newSecLen, secInd]);
+        }
+
+        /* Return the maximum distance in
+        the top section of the heap*/
+        return -pq[0][0];
     }
 }
 
