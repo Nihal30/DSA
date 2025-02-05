@@ -1,0 +1,66 @@
+// Merge two sorted arrays without extra space
+// Given two integer arrays nums1 and nums2. Both arrays are sorted in non-decreasing order.
+
+// Merge both the arrays into a single array sorted in non-decreasing order.
+// The final sorted array should be stored inside the array nums1 and it should be done in-place.
+// nums1 has a length of m + n, where the first m elements denote the elements of nums1 and rest are 0s.
+// nums2 has a length of n.
+
+// Input: nums1 = [-5, -2, 4, 5], nums2 = [-3, 1, 8]
+// Output: [-5, -3, -2, 1, 4, 5, 8]
+// Explanation: The merged array is: [-5, -3, -2, 1, 4, 5, 8], where [-5, -2, 4, 5] are from nums1 and [-3, 1, 8] are from nums2
+
+// brute
+class Solution {
+    // Function to merge two sorted arrays nums1 and nums2
+    merge(nums1, m, nums2, n) {
+        
+        // Declare a 3rd array and 2 pointers:
+        let merged = new Array(m + n);
+        let left = 0;
+        let right = 0;
+        let index = 0;
+
+        /* Insert elements from nums1 and nums2 into
+        merged array using left and right pointers */
+        while (left < m && right < n) {
+            if (nums1[left] <= nums2[right]) {
+                merged[index++] = nums1[left++];
+            } else {
+                merged[index++] = nums2[right++];
+            }
+        }
+
+        // If right pointer reaches the end of nums2:
+        while (left < m) {
+            merged[index++] = nums1[left++];
+        }
+
+        // If left pointer reaches the end of nums1:
+        while (right < n) {
+            merged[index++] = nums2[right++];
+        }
+
+        /* Copy elements from merged array
+        array back to nums1 and nums2 */
+        for (let i = 0; i < m + n; i++) {
+            nums1[i] = merged[i];
+        }
+    }
+}
+
+// Main function to test the solution
+let nums1 = [-5, -2, 4, 5, 0, 0, 0];
+let nums2 = [-3, 1, 8];
+let m = 4;
+let n = 3;
+
+// Create an instance of the Solution class
+let sol = new Solution();
+
+sol.merge(nums1, m, nums2, n);
+
+// Output the merged arrays
+console.log("The merged arrays is:");
+console.log("nums1[] =", nums1);
+
