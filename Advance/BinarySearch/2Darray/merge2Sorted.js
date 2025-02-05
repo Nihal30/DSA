@@ -64,3 +64,55 @@ sol.merge(nums1, m, nums2, n);
 console.log("The merged arrays is:");
 console.log("nums1[] =", nums1);
 
+// Optimal
+class Solution {
+    // Function to merge two sorted arrays nums1 and nums2
+    merge(nums1, m, nums2, n) {
+        // Pointer for nums1 (end of valid elements)
+        let left = m - 1;
+        
+        // Pointer for nums2 (beginning of valid elements)
+        let right = 0;
+        
+        /* Swap the elements until nums1[left]
+        is smaller than nums2[right]*/
+        while (left >= 0 && right < n) {
+            if (nums1[left] > nums2[right]) {
+                [nums1[left], nums2[right]] = [nums2[right], nums1[left]];
+                left--;
+                right++;
+            } else {
+                break;
+            }
+        }
+        
+        // Sort nums1 from index 0 to m-1
+        let sortedSlice = nums1.slice(0, m).sort((a, b) => a - b);
+
+        // Replace the sorted segment back into the original array
+        nums1.splice(0, sortedSlice.length, ...sortedSlice);
+         
+        // Sort nums2 from start to end
+        nums2.sort((a, b) => a - b);
+        
+        // Put the elements of nums2 in nums1
+        for (let i = m; i < m + n; i++) {
+            nums1[i] = nums2[i - m];
+        }
+    }
+}
+
+// Example usage
+let nums1 = [-5, -2, 4, 5, 0, 0, 0];
+let nums2 = [-3, 1, 8];
+let m = 4, n = 3;
+
+// Create an instance of the Solution class
+let sol = new Solution();
+
+sol.merge(nums1, m, nums2, n);
+
+// Output the merged arrays
+console.log("The merged arrays are:");
+console.log("nums1[] = " + nums1.join(" "));
+
