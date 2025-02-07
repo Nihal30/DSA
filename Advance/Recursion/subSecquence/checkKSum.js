@@ -7,6 +7,7 @@
 // Output : Yes
 // Explanation : The subsequences like [1, 2, 5] , [1, 3, 4] , [3, 5] sum up to 8.
 
+// recursion imp
 class Solution {
     // This method recursively checks for the subsequence with the given sum
     solve(i, n, arr, k) {
