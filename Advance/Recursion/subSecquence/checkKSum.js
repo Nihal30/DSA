@@ -34,6 +34,8 @@ class Solution {
     }
 }
 
+
+
 // Main function to test the solution
 const sol = new Solution();
 const nums = [1, 2, 3, 4];
