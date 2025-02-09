@@ -9,39 +9,39 @@
 // Output: [8,9,9,9,0,0,0,1]
 
 
-// Definition for a singly-linked list.
-class ListNode {
-    constructor(val = 0, next = null) {
-        this.val = val;
-        this.next = next;
-    }
-}
+// // Definition for a singly-linked list.
+// class ListNode {
+//     constructor(val = 0, next = null) {
+//         this.val = val;
+//         this.next = next;
+//     }
+// }
 
-// Brute Force Solution
-// 1. Convert linked lists to numbers.
-// 2. Add the numbers.
-// 3. Convert the result back to a linked list.
-function addTwoNumbersBrute(l1, l2) {
-    function getNumber(node) {
-        let num = 0, factor = 1;
-        while (node) {
-            num += node.val * factor;
-            factor *= 10;
-            node = node.next;
-        }
-        return num;
-    }
-    let sum = getNumber(l1) + getNumber(l2);
-    let dummy = new ListNode();
-    let current = dummy;
-    if (sum === 0) return new ListNode(0);
-    while (sum > 0) {
-        current.next = new ListNode(sum % 10);
-        sum = Math.floor(sum / 10);
-        current = current.next;
-    }
-    return dummy.next;
-}
+// // Brute Force Solution
+// // 1. Convert linked lists to numbers.
+// // 2. Add the numbers.
+// // 3. Convert the result back to a linked list.
+// function addTwoNumbersBrute(l1, l2) {
+//     function getNumber(node) {
+//         let num = 0, factor = 1;
+//         while (node) {
+//             num += node.val * factor;
+//             factor *= 10;
+//             node = node.next;
+//         }
+//         return num;
+//     }
+//     let sum = getNumber(l1) + getNumber(l2);
+//     let dummy = new ListNode();
+//     let current = dummy;
+//     if (sum === 0) return new ListNode(0);
+//     while (sum > 0) {
+//         current.next = new ListNode(sum % 10);
+//         sum = Math.floor(sum / 10);
+//         current = current.next;
+//     }
+//     return dummy.next;
+// }
 
 
 //  Time Complexity: 
@@ -49,3 +49,20 @@ function addTwoNumbersBrute(l1, l2) {
 // O(N+M) (converting lists to numbers) + 
 // 𝑂(log𝑆)
 // O(logS) (creating list from sum) → O(N + M + log S).
+
+// Better Solution
+// Uses a carry variable and iterates through both linked lists.
+function addTwoNumbersBetter(l1, l2) {
+    let dummy = new ListNode();
+    let current = dummy, carry = 0;
+    
+    while (l1 || l2 || carry) {
+        let sum = (l1 ? l1.val : 0) + (l2 ? l2.val : 0) + carry;
+        carry = Math.floor(sum / 10);
+        current.next = new ListNode(sum % 10);
+        current = current.next;
+        if (l1) l1 = l1.next;
+        if (l2) l2 = l2.next;
+    }
+    return dummy.next;
+}
