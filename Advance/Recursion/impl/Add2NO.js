@@ -42,3 +42,10 @@ function addTwoNumbersBrute(l1, l2) {
     }
     return dummy.next;
 }
+
+
+//  Time Complexity: 
+
+// O(N+M) (converting lists to numbers) + 
+// 𝑂(log𝑆)
+// O(logS) (creating list from sum) → O(N + M + log S).
