@@ -66,3 +66,5 @@ function addTwoNumbersBetter(l1, l2) {
     }
     return dummy.next;
 }
+
+// Time Complexity: 𝑂(max(𝑁,𝑀))O(max(N,M))
