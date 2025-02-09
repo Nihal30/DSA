@@ -22,3 +22,8 @@ function isPowerOfFourRecursive(n) {
     if (n <= 0 || n % 4 !== 0) return false;
     return isPowerOfFourRecursive(n / 4);
 }
+// Optimal Solution (Using Bit Manipulation)
+// Checks if n is a power of 2 and (n-1) is divisible by 3.
+function isPowerOfFourOptimal(n) {
+    return n > 0 && (n & (n - 1)) === 0 && (n - 1) % 3 === 0;
+}
