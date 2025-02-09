@@ -44,12 +44,16 @@ function printArray(arr, n) {
  
 const n = 5;
 const arr = [5, 4, 3, 2, 1];
+
+
  
 // Creating instance of Solution class
 let solution = new Solution();
 console.log("Original array: ");
 printArray(arr, n);
  
+
+
 // Function call to reverse the array 
 solution.reverse(arr, n); 
 console.log("Reversed array: ");
