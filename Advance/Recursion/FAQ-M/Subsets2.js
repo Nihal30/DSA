@@ -50,3 +50,6 @@ const result = sol.subsetsWithDup(nums);
 for (const subset of result) {
     console.log(subset);
 }
+
+// Time Complexity: O(2^N * N) - Each element is either included or excluded, leading to an exponential number of subsets.
+// Space Complexity: O(N) - The space complexity is dominated by the recursion stack, which can go as deep as the number of elements in the input list.
