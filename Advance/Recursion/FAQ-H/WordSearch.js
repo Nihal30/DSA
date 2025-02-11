@@ -70,3 +70,9 @@ if (solution.exist(board, word)) {
 } else {
     console.log("Word not found!");
 }
+
+
+// Complexity Analysis
+// Time Complexity : O(N * M * 4^L) where N is rows, M is columns and L is the word length; recursive search through board.
+
+// Space Complexity : O(L) due to recursive call stack depth, where L is the length of the word.
