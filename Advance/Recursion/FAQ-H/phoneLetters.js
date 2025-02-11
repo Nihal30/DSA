@@ -50,3 +50,9 @@ const result = solution.letterCombinations(digits); // Get combinations
 
 // Print the results
 console.log(result);
+
+// Complexity Analysis
+// Time Complexity O(4^N * N), where n is the length of the input digits. 
+// This is because each digit can map to up to 4 letters and there are n digits.
+
+// Space Complexity: O(N), where n is the length of the input digits. This is due to the recursion stack depth
