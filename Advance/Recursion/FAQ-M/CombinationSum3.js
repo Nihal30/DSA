@@ -61,3 +61,8 @@ let result = sol.combinationSum3(k, n);
 result.forEach(combination => {
     console.log(combination.join(' '));
 });
+
+// Complexity Analysis
+// Time Complexity The time complexity is O(2^9 * k), due to the exploration of all subsets of the set {1, 2, ..., 9}.
+
+// Space Complexity The space complexity is O(k), due to the maximum depth of the recursion stack, which is k.
