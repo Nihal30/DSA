@@ -105,3 +105,8 @@ for (const sol of solutions) {
     }
     console.log();
 }
+
+// Time Complexity : The time complexity is O(N!), where N is the number of queens,
+//  due to the recursive search through potential placements and backtracking.
+
+// Space Complexity : The space complexity is O(N), for the recursion stack and the storage of the solutions.
