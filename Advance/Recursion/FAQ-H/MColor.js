@@ -70,3 +70,8 @@ if (sol.graphColoring(edges, m, n)) {
 } else {
     console.log("The graph cannot be colored with " + m + " colors.");
 }
+
+// Complexity Analysis
+// Time Complexity : O(M^N) where m is the number of colors and n is the number of nodes, since each node can be colored in m ways and there are n nodes to color.
+
+// Space Complexity : O(N) for the colors array and O(n) for the adjacency list, resulting in O(N) total space complexity.
