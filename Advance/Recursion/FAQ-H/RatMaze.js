@@ -77,3 +77,7 @@ const paths = sol.findPath(grid);
 for (const path of paths) {
     console.log(path);
 }
+
+
+// Time Complexity : The time complexity is O(4^(N^2)) due to recursion exploring all paths in the grid.
+// Space Complexity :The space complexity is O(N^2) for the recursion stack and result storage.
