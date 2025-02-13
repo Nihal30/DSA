@@ -83,3 +83,8 @@ const board = [
 const solution = new Solution();
 solution.solveSudoku(board);
 console.log(board.map(row => row.join(' ')).join('\n'));
+
+// Complexity Analysis
+// Time Complexity : O(9^(N*N)), as each cell can be filled with 1 to 9 digits and there are n*n cells.
+
+// Space Complexity O(n), where n is the depth of the recursion stack.
