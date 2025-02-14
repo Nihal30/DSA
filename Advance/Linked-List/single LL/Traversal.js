@@ -62,3 +62,4 @@ console.log("Linked List Values:");
 for (let val of result) {
     console.log(val + " ");
 }
+
