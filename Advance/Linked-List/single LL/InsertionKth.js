@@ -72,13 +72,16 @@ let head = new ListNode(arr[0]);
 head.next = new ListNode(arr[1]);
 head.next.next = new ListNode(arr[2]);
 
+
 // Print the original list
 console.log("Original List: ");
 printLL(head);
 
+
 // Create a Solution object
 let sol = new Solution();
 head = sol.insertAtKthPosition(head, X, K);
+
 
 // Print the modified linked list
 console.log("List after inserting the given value at the Kth position: ");
