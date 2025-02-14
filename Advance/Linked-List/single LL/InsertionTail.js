@@ -57,9 +57,11 @@ head.next.next = new ListNode(arr[2]);
 console.log("Original List: ");
 printLL(head);
 
+
 // Create a Solution object
 let sol = new Solution();
 head = sol.insertAtTail(head, val);
+
 
 // Print the modified linked list
 console.log("List after inserting the given value at the tail:");
