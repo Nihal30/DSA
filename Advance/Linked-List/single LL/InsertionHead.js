@@ -64,3 +64,7 @@ head = sol.insertAtHead(head, X);
 // Print the modified linked list
 console.log("List after inserting the given value at head: ");
 printLL(head);
+
+// Complexity Analysis:
+// Time Complexity: O(1) for inserting the new node at the head of the linked list
+// Space Complexity: O(1) no extra space used.
