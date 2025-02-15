@@ -92,3 +92,9 @@ const main = () => {
 }
 
 main();
+
+// Complexity Analysis:
+// Time Complexity: O(1) because removing the head node from a doubly linked list is a 
+// constant-time operation. It's independent of the list's size, as it involves updating references to the head and the new head.
+
+// Space Complexity: O(1) as no extra space is used.
