@@ -123,3 +123,8 @@ const main = () => {
 }
 
 main();
+
+// Complexity Analysis:
+// Time Complexity: O(k) because it only involves identifying the Kth node and updating its references to delete it.
+
+// Space Complexity: O(1) as no extra space is used.
