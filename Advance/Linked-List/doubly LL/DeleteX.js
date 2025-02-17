@@ -96,3 +96,7 @@ const main = () => {
 
 main();
 
+// Complexity Analysis:
+// Time Complexity: O(1) as it only involves updating references and is independent of the list’s length.
+
+// Space Complexity: O(1) as no extra space is used.
