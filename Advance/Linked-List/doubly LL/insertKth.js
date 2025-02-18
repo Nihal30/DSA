@@ -113,3 +113,11 @@ const main = () => {
 }
 
 main();
+
+// Complexity Analysis:
+// Time Complexity: O(N), where N is the number of nodes in the Linked List. In the worst case,
+//  it involves traversing N nodes in the Doubly Linked List to reach the last element. 
+//  In the best case, when K is 0 (insertion at the head), the time complexity is O(1) as 
+//  it involves a constant number of operations. In the average case, it's O(K).
+
+// Space Complexity: O(1) as no extra space is used.
