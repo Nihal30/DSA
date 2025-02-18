@@ -85,3 +85,10 @@ const solution = new Solution();
 const result = solution.addTwoNumbers(l1, l2);
 
 printList(result);
+
+
+// Complexity Analysis
+// Time Complexity: O(max(M, N)) Here, M and N represent the sizes of the linked lists l1 and l2,
+//  respectively. The algorithm traverses both lists at most once, hence the time complexity depends on the length of the longer list.
+
+// Space Complexity: O(max(M,N)) The length of the new list is at most max(M, N)+1.
