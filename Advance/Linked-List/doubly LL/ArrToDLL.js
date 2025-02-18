@@ -64,3 +64,9 @@ const main = () => {
 }
 
 main();
+
+// Complexity Analysis:
+
+// Time Complexity: O(N) where N is the length of the array. The code iterates over the array once creating a new node for each element.
+// Space Complexity: O(N) The space complexity depends on the memory used to store doubly linked list nodes. Each node, storing data and 
+// two pointers ('next' and 'back'), requires constant space. Thus, space complexity is O(N) as it scales linearly with the array's size.
