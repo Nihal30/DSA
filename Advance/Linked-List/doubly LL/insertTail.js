@@ -104,3 +104,9 @@ const main = () => {
 }
 
 main();
+
+// Complexity Analysis:
+// Time Complexity: O(N) where N is the length of the array. 
+// We iterate through the input array exactly once and at each element perform constant time operations.
+
+// Space Complexity: O(1) as no extra space is used.
