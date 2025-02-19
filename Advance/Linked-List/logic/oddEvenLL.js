@@ -96,3 +96,12 @@ head.next.next.next.next.next = new ListNode(arr[5]);
 const solution = new Solution();
 head = solution.oddEvenList(head);
 printLL(head);
+
+// Complexity Analysis
+// Time Complexity: O(2xN) for the following reasons:-
+// Traversing the odd-indexed elements takes O(N/2) time.
+// Traversing the even-indexed elements takes O(N/2) time.
+// Updating the linked list with the values from the array takes O(N) time.
+// Here N is the size of the linked list.
+
+// Space Complexity: O(N) because an additional list is used to store the grouped elements from the linked list.
