@@ -76,3 +76,10 @@ head.next.next.next.next = new ListNode(arr[4]);
 const solution = new Solution();
 head = solution.removeNthFromEnd(head, N);
 printLL(head);
+
+// Complexity Analysis
+// Time Complexity: O(L) + O(L-N) We are calculating the length of 
+// the linked list and then iterating up to the (L-N)th node of the linked list, 
+// where L is the total length of the list and N is the position of the node to delete.
+
+// Space Complexity: O(1) as we have not used any extra space.
