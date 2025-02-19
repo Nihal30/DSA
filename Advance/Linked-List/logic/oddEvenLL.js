@@ -174,3 +174,9 @@ const solution = new Solution();
 head = solution.oddEvenList(head);
 console.log("New Linked List: ");
 printLL(head);
+
+// Complexity Analysis
+// Time Complexity: O(N/2)x2 ~ O(N) because we are iterating over the odd-indexed as well as 
+// the even-indexed elements. Here N is the size of the given linked list.
+
+// Space Complexity: O(1) because we have not used any extra space.
