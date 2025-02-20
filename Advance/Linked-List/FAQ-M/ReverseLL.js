@@ -170,3 +170,13 @@ head = solution.reverseList(head);
 console.log("Reversed Linked List: ");
 printLinkedList(head);
 
+// Complexity Analysis
+// Time Complexity: O(N) because the algorithm traverses the linked list twice:
+//  once to push the values onto the stack, and once to pop the values and update 
+//  the linked list. Since each node is visited during both traversals, the time complexity is linear, O(N).
+
+// Space Complexity: O(1) The algorithm does not use additional space explicitly for 
+// data structures or allocations during the reversal process. However, it does use stack space due to recursion,
+//  storing function calls and associated variables during the recursive traversal and reversal of the list. 
+//  Despite this, no extra memory beyond the program's existing execution space is allocated, maintaining a space complexity of O(1).
+
