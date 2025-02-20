@@ -83,3 +83,12 @@ head = solution.reverseList(head);
 // Print the reversed linked list
 console.log("Reversed Linked List: ");
 printLinkedList(head);
+
+// Complexity Analysis
+// Time Complexity: O(N) because the algorithm traverses the entire linked list once, 
+// where 'N' is the number of nodes in the list. Since each node is visited exactly once during the traversal,
+//  the time complexity is linear, O(N).
+
+// Space Complexity: O(1) because the algorithm uses only a constant amount of additional space. 
+// This is achieved by utilizing three pointers (prev, temp, and front) to 
+// reverse the list without any significant extra memory usage, resulting in constant space complexity, O(1).
