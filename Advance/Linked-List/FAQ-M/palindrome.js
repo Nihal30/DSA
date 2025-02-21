@@ -238,3 +238,13 @@ function printLinkedList(head) {
     }
 })();
 
+// Complexity Analysis
+// Time Complexity: O(2xN) The algorithm involves traversing the linked list twice. 
+// The first traversal finds the middle and reverses the second half, while the second traversal 
+// compares elements from both halves. Since each traversal covers N/2 elements, the total time 
+// complexity is O(N/2 + N/2 + N/2 + N/2), which simplifies to O(2N), ultimately reducing to O(N).
+
+// Space Complexity: O(1) This approach uses a constant amount of additional space, regardless of the 
+// linked list's size. It does not require any extra data structures that depend on the input size, resulting
+//  in a space complexity of O(1).
+
