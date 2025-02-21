@@ -165,3 +165,16 @@ function main() {
 // Call the main function to execute the test
 main();
 
+// Time Complexity: O(N), where N represents the number of nodes in the linked list.
+//  In the worst-case scenario, the fast pointer, which advances more quickly, will either
+//   reach the end of the list (if there's no loop) or catch up to the slow pointer (if there's a loop) in 
+// a time proportional to the length of the list.
+
+// The reason this complexity is O(N) and not slower is due to the fact that each step of the algorithm decreases the gap 
+// between the fast and slow pointers (when they are within the loop) by one node. Thus, the maximum number of steps required 
+// for them to meet is directly related to the number of nodes in the list.
+
+// Space Complexity: O(1) The algorithm utilizes a constant amount of additional space, regardless of the size of the linked list.
+//  This efficiency is achieved by using only two pointers (slow and fast) to detect the loop, without needing any significant extra 
+//  memory, resulting in a constant space complexity of O(1).
+
