@@ -199,3 +199,14 @@ head = solution.addOne(head);
 // Print the modified linked list
 console.log("Linked List after adding one: ");
 printLinkedList(head);
+
+// Complexity Analysis
+// Time Complexity: O(N), where N is the number of nodes in the linked list.
+//  This is because each node in the linked list is visited exactly once by the recursive 
+//  addHelper function. The process involves traversing the entire list to reach the end, 
+//  and then propagating the carry back through each node, resulting in a linear time complexity of O(N).
+
+// Space Complexity: O(N), due to the recursion stack. Since the addHelper function calls itself recursively
+//  for each node in the list, the maximum depth of the recursion stack is N, where N is the number of nodes in the linked list.
+// This means the space required for the recursion stack grows linearly with the size of the list, leading to a space complexity of O(N).
+
