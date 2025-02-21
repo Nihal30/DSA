@@ -106,3 +106,10 @@ const solution = new Solution();
 head1 = solution.addOne(head1);
 console.log("Result after adding one: ");
 printList(head1);
+
+// Complexity Analysis
+// Time Complexity: O(N) because we traverse the linked list three times,
+//  each with a time complexity of O(N), resulting in O(3N), which simplifies to O(N) 
+//  since constant factors are ignored in Big-O notation. Here, N is the number of nodes in the linked list.
+
+// Space Complexity: O(1) because we use a constant amount of extra space for pointers and variables.
