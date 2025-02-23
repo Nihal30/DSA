@@ -105,6 +105,7 @@ class Solution {
                 index = i;
             }
         }
+        
 
         /* Return the index of the row 
            with the maximum number of 1's */
