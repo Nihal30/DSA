@@ -163,3 +163,11 @@ head = solution.deleteMiddle(head);
 process.stdout.write("Updated Linked List: ");
 printLL(head);
 
+// Time Complexity
+// Time Complexity: O(N/2) because the code traverses the linked list using the Tortoise and Hare approach.
+//  The code increments both 'slow' and 'fast' pointers at different rates, effectively covering about half the 
+//  list before reaching the midpoint, hence the time complexity of the algorithm is O(N/2) ~ O(N).
+
+// Space Complexity: O(1) because the code uses a constant amount of extra space regardless of the size of the input (linked list).
+//  It doesn't use any additional data structures in proportion to the input size.
+
