@@ -153,6 +153,7 @@ class Solution {
     }
 }
 
+
 // Create a sample linked list with a loop
 const head = new ListNode(1);
 const second = new ListNode(2);
