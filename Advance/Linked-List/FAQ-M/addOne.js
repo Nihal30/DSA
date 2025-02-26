@@ -192,6 +192,7 @@ head.next.next = new ListNode(9);
 console.log("Original Linked List: ");
 printLinkedList(head);
 
+
 // Add one to the linked list
 const solution = new Solution();
 head = solution.addOne(head);
