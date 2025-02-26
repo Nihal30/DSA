@@ -217,6 +217,7 @@ function printLinkedList(head) {
     console.log();
 }
 
+
 (function main() {
     /*Create a linked list with values 1, 5, 2, 5, and 1 (15251, a palindrome)*/
     let head = new ListNode(1);
