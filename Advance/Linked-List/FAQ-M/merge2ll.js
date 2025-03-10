@@ -86,3 +86,13 @@ let mergedList = solution.mergeTwoLists(list1, list2);
 
 console.log("Merged sorted linked list: ");
 printLinkedList(mergedList);
+
+
+// Complexity Analysis
+// Time Complexity: O(N1 + N2) + O(N log N) + O(N) where N1 is the number of linked list nodes in the first list,
+//  N2 is the number of linked list nodes in the second list, and N is the total number of nodes (N1 + N2). 
+//  Traversing both lists into the array takes O(N1 + N2), sorting the array takes O((N1 + N2) X log(N1 + N2)),
+//   and then traversing the sorted array and creating a list gives us another O(N1 + N2).
+
+// Space Complexity: O(N) + O(N) where N is the total number of nodes from both lists (N1 + N2). 
+// O(N) to store all the nodes of both the lists in an external array and another O(N) to create a new combined list.
