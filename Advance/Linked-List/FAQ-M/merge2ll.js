@@ -177,3 +177,11 @@ let mergedList = solution.mergeTwoLists(list1, list2);
 
 console.log("Merged sorted linked list: ");
 printLinkedList(mergedList);
+
+// Complexity Analysis
+// Time Complexity: O(N1 + N2) because both lists are traversed in a single pass for merging without any additional
+//  loops or nested iterations. Here N1 is the number of nodes in the first linked list and N2 is the number of nodes 
+//  in the second linked list.
+
+// Space Complexity: O(1) because no additional data structures or space is allocated for storing data, 
+// only a constant space for pointers to maintain for traversing the linked list.
