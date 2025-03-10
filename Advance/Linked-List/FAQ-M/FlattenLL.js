@@ -130,3 +130,17 @@ let flattened = sol.flattenLinkedList(head);
 // Printing the flattened linked list
 console.log("\nFlattened linked list: ");
 printLinkedList(flattened);
+
+
+// Complexity Analysis
+// Time Complexity: O(NxM) + O(NxM log(NxM)) + O(NxM) where N is the number of nodes along the next 
+// pointers and M is the number of nodes along the child pointers.
+
+// O(NxM) because we traverse through all the nodes, iterating through N nodes along the next pointers and M nodes 
+// along the child pointers.
+// O(NxM log(NxM)) because we sort the array containing NxM total elements.
+// O(NxM) because we reconstruct the linked list from the sorted array by iterating over the NxM elements.
+// Space Complexity: O(NxM) + O(NxM) where N is the number of nodes along the next pointers and M is the number of nodes along the child pointers.
+
+// O(NxM) for storing all the elements in an additional array for sorting.
+// O(NxM) to reconstruct the linked list from the array after sorting.
