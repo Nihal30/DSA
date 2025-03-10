@@ -267,3 +267,15 @@ let flattened = sol.flattenLinkedList(head);
 // Printing the flattened linked list
 console.log("\nFlattened linked list: ");
 printLinkedList(flattened);
+
+// Complexity Analysis
+// Time Complexity: O(Nx(2M)) ~ O(2NxM) where N is the length of the linked list along the next pointer and M
+//  is the length of the linked list along the child pointers.
+
+// The merge operation in each recursive call takes time complexity proportional to the length of the linked lists being merged
+//  as they have to iterate over the entire lists. Since the vertical depth of the linked lists is assumed to be M, 
+//  the time complexity for a single merge operation is proportional to O(2M).
+// This operation is performed N number of times (to each and every node along the next pointer list) hence the resultant 
+// time complexity becomes O(Nx2M).
+// Space Complexity: O(1) as this code uses no external space or additional data structures to store values.
+//  But a recursive stack uses O(N) space to build the recursive calls for each node along the next pointer list.
