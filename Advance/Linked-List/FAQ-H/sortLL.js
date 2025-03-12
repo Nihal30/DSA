@@ -200,3 +200,13 @@ head = solution.sortList(head);
 
 console.log("Sorted Linked List: ");
 printLinkedList(head);
+
+// Complexity Analysis
+// Time Complexity: O(N log N) where N is the number of nodes in the linked list.
+//  Finding the middle node of the linked list requires traversing it linearly taking O(N) 
+//  time complexity and to reach the individual nodes of the list, it has to be split log N times 
+//  (continuously halve the list until we have individual elements).
+
+// Space Complexity: O(1) as no additional data structures or space is allocated for storage during the merging process.
+//  However, space proportional to O(log N) stack space is required for the recursive calls. The maximum recursion depth 
+//  of log N height is occupied on the call stack.
