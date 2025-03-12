@@ -243,3 +243,11 @@ let clonedList = solution.copyRandomList(head);
 // Print the cloned linked list
 console.log("\nCloned Linked List with Random Pointers:");
 printClonedLinkedList(clonedList);
+
+// Complexity Analysis
+// Time Complexity: O(3N) where N is the number of nodes in the linked list:
+// First traversal to create copies of the nodes and insert them between the original nodes.
+// Second traversal to set the random pointers of the copied nodes to their corresponding copied nodes.
+// Third traversal to separate the copied nodes from the original nodes.
+// Space Complexity: O(N) where N is the number of nodes in the linked list as 
+// the only extra space allocated is to create the copied list without creating any other additional data structures.
