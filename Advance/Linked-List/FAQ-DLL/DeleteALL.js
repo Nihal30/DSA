@@ -98,3 +98,9 @@ function newNode(data) {
     process.stdout.write("Modified list: ");
     printList(head);
 })();
+
+
+// Complexity Analysis
+// Time Complexity: O(N) because the linked list is traversed only once. Here, N represents the number of nodes in the linked list.
+
+// Space Complexity: O(1) because no extra space used.
