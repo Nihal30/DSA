@@ -15,3 +15,7 @@
 //     reverse(result)
 //     return result
 // }
+
+// Time Complexity: O(logN) Since the number is divided by 2 continuously.
+// Space Complexity: O(logN) Storing the bits.
+
