@@ -49,5 +49,13 @@ let ans = sol.singleNumber(nums);
 
 console.log("The single number in given array is: " + ans);
 
+// Complexity Analysis:
+// Time Complexity: O(N) (where N is the size of the array) –
+
+// Traversing the array to update the Hash Map - O(N).
+// Traversing on the map - O(N) (in worst case).
+// Space Complexity: O(N) – Using a hashmap data structure and in the worst-case
+//  (when all elements in the array are unique), it will store N key-value pairs.
+
 
 
