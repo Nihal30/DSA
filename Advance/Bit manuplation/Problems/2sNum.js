@@ -88,3 +88,9 @@ const sol = new Solution();
 const ans = sol.singleNumber(nums);
 
 console.log("The single number(II) is:", ans);
+
+// Complexity Analysis:
+// Time Complexity: O(N), where N is the number of elements in the array
+// Traversing the array once takes linear time.
+
+// Space Complexity: O(1), as only a couple of variables are used.
