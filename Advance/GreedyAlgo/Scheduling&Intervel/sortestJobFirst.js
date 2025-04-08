@@ -47,3 +47,9 @@ console.log("Array Representing Job Durations: " + jobs.join(" "));
 const solution = new Solution();
 const ans = solution.solve(jobs);
 console.log("Total waiting time: " + ans);
+
+// Complexity Analysis
+// Time Complexity: O(N logN + N) where N is the length of the jobs array.
+// The code first sorts the job durations, which takes O(N logN) time. After sorting, 
+// it iterates through the job durations to calculate the total waiting time, which takes O(N) time.
+// Space Complexity: O(1) no extra space used.
