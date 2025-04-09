@@ -72,3 +72,11 @@ const result = solution.JobScheduling(jobs);
 // Output the result
 console.log("Number of Jobs: " + result[1]);
 console.log("Maximum Profit: " + result[0]);
+
+// Complexity Analysis
+// Time Complexity: O(N logN + N2) where N is the number of jobs. First, 
+// the jobs are sorted based on profit in descending order, resulting in O(N logN) complexity. 
+// Then, the algorithm iterates over the jobs to select them. The outer loop runs once for each job (N iterations),
+//  and the inner loop iterates up to the job’s deadline, which can be at most N in the worst case, giving a complexity of O(N2).
+// Space Complexity: O(N) where N is the number of jobs. An array of size N is used to keep track of occupied slots taking O(N) 
+// space.

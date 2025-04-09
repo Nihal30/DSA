@@ -63,3 +63,11 @@ const end = [2, 4, 6, 7, 9, 9];
 const maxMeetings = obj.maxMeetings(start, end);
 // Output the maximum number of meetings
 console.log("Maximum number of meetings:", maxMeetings);
+
+// Complexity Analysis
+// Time Complexity: O(N+N logN) where 𝑁 is the size of the start and end arrays. 
+// The O(N) term accounts for filling the meetings array with start and end times. 
+// The O(NlogN) term arises from sorting the meetings based on their end times.
+//  After sorting, the function iterates through the sorted meetings in O(N) time to 
+//  count the maximum number of non-overlapping meetings.
+// Space Complexity: O(N) since we used an additional data structure for storing the start time and end time.
