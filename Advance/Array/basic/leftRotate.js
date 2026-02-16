@@ -6,6 +6,8 @@
 // Explanation: Initially, nums = [1, 2, 3, 4, 5]
 // Rotating once to left -> nums = [2, 3, 4, 5, 1]
 
+
+// revision
 class Solution {
     rotateArrayByOne(nums) {
         // Store the first element in a temporary variable
